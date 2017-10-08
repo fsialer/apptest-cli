@@ -1,0 +1,1 @@
+<button *ngFor="let boton of (botones | filterMenu:padre_control)" type="button" (click)=cargarUrl(boton.url_control)> {{boton.nom_control}}</button>

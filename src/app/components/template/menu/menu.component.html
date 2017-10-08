@@ -1,0 +1,19 @@
+<div>
+    <h1>Pruebas de sistema v.1</h1>
+    <p>Usuario: {{user.name}}</p>
+</div>
+<nav>
+    <ul>
+        <li *ngFor="let menu of (menus | filterMenu:num)">
+            <a routerLink="/{{menu.url_control}}">{{menu.nom_control}}</a>
+            <ul *ngIf="(menus|filterMenu:menu.id).length>0">
+                <li *ngFor="let menu2 of (menus | filterMenu:menu.id)">
+                    <a routerLink="/{{menu2.url_control}}" (click)=valor(menu2)>{{menu2.nom_control}}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<app-boton></app-boton>
+<router-outlet>
+</router-outlet>
