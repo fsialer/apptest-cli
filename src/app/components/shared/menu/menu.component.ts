@@ -10,7 +10,7 @@ import { BotonComponent } from '../boton/boton.component';
     templateUrl: 'menu.component.html'
 })
 
-export class MenuComponent implements OnInit {
+export default class MenuComponent implements OnInit {
     public user: any={};
     public num: any = 0;
     public menus: Array<any> = new Array();
@@ -21,27 +21,37 @@ export class MenuComponent implements OnInit {
         private authService: AuthService) { }
 
     ngOnInit(): void {
-       /*  this.getAuthenticated(); */
+        this.getAuthenticated();
     }
 
     public valor(value: any) {
         console.log(value);
-        this.botonComponent.getAuthenticated(value.id);
+        localStorage.setItem('padre_control',JSON.stringify(value.id));
+        /* this.botonComponent.getUser_local(value.id); */
     }
 
     public getAuthenticated(): void {
-        this.authService.getAuthenticated().subscribe(
-            user => {
-                this.user = user['user'];
-                console.log(this.user);
-                this.menuBuild();
-            },
-            error => {
-                if (error instanceof AuthHttpError) {
-                    this.router.navigate(['/']);
+        if(localStorage.getItem('user')){
+            let user_local=localStorage.getItem('user');
+            this.user=JSON.parse(user_local);
+            this.menuBuild();
+            console.log(this.user);
+        }else{
+            this.authService.getAuthenticated().subscribe(
+                user => {
+                    this.user = user['user'];
+                    localStorage.setItem('user',JSON.stringify(this.user));
+                    console.log(this.user);
+                    this.menuBuild();
+                },
+                error => {
+                    if (error instanceof AuthHttpError) {
+                        this.router.navigate(['/']);
+                    }
                 }
-            }
-        );
+            );
+        }
+        
     }
 
     private menuBuild(): void {

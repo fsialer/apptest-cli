@@ -1,0 +1,54 @@
+<!-- <ul class="pagination">
+  <li (click)="selectPage(1, $event)" [class.disabled]="currentPage == 1">
+    <a href="" title="Go to first page">&laquo;</a>
+  </li>
+  <li (click)="selectPage(currentPage - 1, $event)" [class.disabled]="currentPage == 1">
+    <a href="" title="Go to previous page">&lsaquo;</a>
+  </li>
+  <li class="disabled" (click)="cancelEvent($event)" *ngIf="(currentPage - range) > 1">
+    <a href="">...</a>
+  </li>
+  <li *ngFor="let page of pages | async" [class.active]="page == currentPage">
+    <a href="" (click)="selectPage(page, $event)">
+      {{page}}
+    </a>
+  </li>
+  <li class="disabled" (click)="cancelEvent($event)" *ngIf="(currentPage + range) < totalPages">
+    <a href="">...</a>
+  </li>
+  <li (click)="selectPage(currentPage + 1, $event)" [class.disabled]="currentPage == totalPages">
+    <a href="" title="Go to next page">&rsaquo;</a>
+  </li>
+  <li (click)="selectPage(totalPages, $event)" [class.disabled]="currentPage == totalPages">
+    <a href="" title="Go to last page">&raquo;</a>
+  </li>
+</ul>
+ -->
+
+<!-- pager -->
+<!-- {{pager.pages | json}}
+<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+  <li [ngClass]="{disabled:pager.currentPage === 1}">
+    <a (click)="setPage(1)">First</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === 1}">
+    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+  </li>
+  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+    <a (click)="setPage(page)">{{page}}</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+    <a (click)="setPage(pager.currentPage + 1)">Next</a>
+  </li>
+  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+    <a (click)="setPage(pager.totalPages)">Last</a>
+  </li>
+</ul> -->
+
+<!-- <p class="pagination">
+  <button [disabled] ="currentPage == 1" (click)="currentPage = currentPage - 1">PREV</button>
+    <span>Page {{currentPage}} of {{ getNumberPages() }}</span>
+  <button [disabled] = "currentPage >= getNumberPages()" 
+           (click) ="currentPage = currentPage + 1">NEXT</button>
+</p> -->
+<button (click)="aumentar()">+</button><button (click)="mostrar()">mostrar</button>

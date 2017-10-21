@@ -1,0 +1,22 @@
+<div>
+    <div>
+        <h1>Agregar Rol</h1>
+    </div>
+    <div>
+        <form #rolForm="ngForm" (ngSubmit)="agregarRol()">
+            <div>
+                <label for="inputNomRol">Nombre:</label>
+                <input type="text" id="inputNomRol" placeholder="Nombre del rol" 
+                [(ngModel)]="rol.nom_rol" name="nom_rol" #nom_rol="ngModel" required>
+            </div>
+            <div>
+                <label for="inputDescRol">Descripcion:</label>
+                <input type="text" id="inputDescRol" placeholder="Descripcion del Rol" 
+                [(ngModel)]="rol.desc_rol" name="desc_rol" #desc_rol="ngModel" required>
+            </div>
+            <button type="submit" [disabled]="!rolForm.form.valid">Guardar</button>
+            <button type="button" (click)="regresar()">Cancelar</button>
+        </form>
+
+    </div>
+</div>

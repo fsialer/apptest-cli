@@ -1,0 +1,20 @@
+<h1>Roles</h1>
+<app-message></app-message>
+<app-boton [key]="key"></app-boton>
+<input type="search" placeholder="Search" [(ngModel)]="searchText">
+<table>
+    <tr>
+        <th></th>
+        <th>Nombres de Roles</th>
+        <th>Descripcion</th>
+    </tr>
+    <tr *ngFor="let rol of (roles | search:searchText | pagination:{itemsPerPage: 6, currentPage: p})">
+        <td>
+            <input type="radio" name="selected" (click)="seleccionado(rol.id)">
+        </td>
+        <td>{{rol.nom_rol}}</td>
+        <td>{{rol.desc_rol}}</td>
+    </tr>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<!-- <app-pagination [offset]="offset" [limit]="limit" [size]="count" (pageChange)="onPageChange($event)"></app-pagination> -->

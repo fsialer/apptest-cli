@@ -4,11 +4,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { AuthHttp } from 'angular2-jwt';
 import { tokenNotExpired } from 'angular2-jwt';
-import { User } from '../../models/user';
+import { Rol } from '../../models/rol';
 import { apiGobal } from '../../core/_helper';
 
 @Injectable()
-export class UserService {
+export class RolService {
     private _apiUrl = apiGobal.url;
     private _headers = new Headers;
 
@@ -17,31 +17,28 @@ export class UserService {
         this._headers.append('X-Requested-With', 'XMLHttpRequest');
     }
 
-    getUsers(): Observable<User[]> {
-        return this.authHttp.get(`${this._apiUrl}users`)
+    getRoles(): Observable<Rol[]> {
+        return this.authHttp.get(`${this._apiUrl}roles`)
             .map((response) => response.json()).catch(this.handleError);
     }
 
-   /*  getUserspaginated(page: number | string): Observable<User[]> {
-        return this.authHttp.get(`${this._apiUrl}users/paginated/${page}`)
-            .map((response) => response.json()).catch(this.handleError);
-    } */
-    getUser(id: number | string): Observable<User[]> {
-        return this.authHttp.get(`${this._apiUrl}users/${id}`)
+    getRol(id: number | string): Observable<Rol[]> {
+        return this.authHttp.get(`${this._apiUrl}roles/${id}`)
             .map((response) => response.json()).catch(this.handleError);
     }
-    createUser(user: User): Observable<any> {
-        return this.authHttp.post(`${this._apiUrl}users`, this._parseUser(user))
+    createRol(user: Rol): Observable<any> {
+        return this.authHttp.post(`${this._apiUrl}roles`, this._parseUser(user))
             .map((response) => response.json())
             .catch(this.handleError);
     }
 
-    updateUser(user: User): Observable<User[]> {
-        return this.authHttp.put(`${this._apiUrl}users/${user.id}`, this._parseUser(user))
+    updateRol(rol: Rol): Observable<Rol[]> {
+        return this.authHttp.put(`${this._apiUrl}roles/${rol.id}`, this._parseUser(rol))
             .map((response) => response.json()).catch(this.handleError);
     }
-    deleteUser(id: number | string): Observable<any> {
-        return this.authHttp.delete(`${this._apiUrl}users/${id}`)
+    
+    deleteRol(id: number | string): Observable<any> {
+        return this.authHttp.delete(`${this._apiUrl}roles/${id}`)
             .map((response) => response.json())
             .catch(this.handleError);
     }
